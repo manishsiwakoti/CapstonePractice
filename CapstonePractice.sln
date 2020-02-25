@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapstonePractice", "CapstonePractice\CapstonePractice.csproj", "{8F7DEAF9-A52E-408D-BD53-106254C33F2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapstonePracticeLibrary", "CapstonePracticeLibrary\CapstonePracticeLibrary.csproj", "{040E2EB2-6656-492D-BE13-F816ED0473A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F7DEAF9-A52E-408D-BD53-106254C33F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F7DEAF9-A52E-408D-BD53-106254C33F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F7DEAF9-A52E-408D-BD53-106254C33F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F7DEAF9-A52E-408D-BD53-106254C33F2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{040E2EB2-6656-492D-BE13-F816ED0473A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{040E2EB2-6656-492D-BE13-F816ED0473A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{040E2EB2-6656-492D-BE13-F816ED0473A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{040E2EB2-6656-492D-BE13-F816ED0473A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A30490C4-1A44-4CE5-9D93-0EACDE71D66A}
+	EndGlobalSection
+EndGlobal
