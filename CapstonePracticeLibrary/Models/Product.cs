@@ -23,6 +23,7 @@ namespace CapstonePracticeLibrary.Models
 
         [JsonIgnore]
         public virtual Vendor Vendor { get; set; }
+        
 
         
             

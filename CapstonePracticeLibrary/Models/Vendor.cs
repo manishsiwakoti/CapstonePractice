@@ -26,6 +26,11 @@ namespace CapstonePracticeLibrary.Models
         
         public string Email { get; set; }
 
+        public override string ToString()
+            {
+            return $"{Id}/{Code}/{Name}/{Address}/{City}/{State}/{Zip}";
+            }
+
         public virtual List<Product> Products { get; set; }
         public Vendor() { }
         }
