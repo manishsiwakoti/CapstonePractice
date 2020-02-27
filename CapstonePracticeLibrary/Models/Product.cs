@@ -21,13 +21,16 @@ namespace CapstonePracticeLibrary.Models
         public string PhotoPath { get; set; }
         public int VendorId { get; set; }
 
-        [JsonIgnore]
+        
         public virtual Vendor Vendor { get; set; }
-        
+        public virtual List<RequestLine> RequestLines { get; set; }
 
-        
-            
+        public override string ToString() => $"{Id}/{PartNbr}/{Name}/{Price}/{Unit}/{PhotoPath}/{VendorId}";
+
         public Product() { }
 
+       
+
         }
+
     }

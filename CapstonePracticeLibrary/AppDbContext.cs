@@ -60,7 +60,7 @@ namespace CapstonePracticeLibrary
                 e.HasKey(x => x.Id);
                 e.Property(x => x.PartNbr).HasMaxLength(30).IsRequired();
                 e.Property(x => x.Name).HasMaxLength(30).IsRequired();
-                e.Property(x => x.Price).HasColumnType("decimal(11, 2)");
+                e.Property(x => x.Price).HasColumnType("decimal(11, 2)").IsRequired();
                 e.Property(x => x.Unit).HasMaxLength(30).IsRequired();
                 e.Property(x => x.PhotoPath).HasMaxLength(255);
                 e.HasIndex(x => x.PartNbr).IsUnique();
@@ -87,8 +87,12 @@ namespace CapstonePracticeLibrary
             model.Entity<RequestLine>(e => {
                 e.ToTable("RequestLines");
                 e.HasKey(x => x.Id);
-                e.Property(x => x.RequestId);
-                e.Property(x => x.Quantity);
+               // e.Property(x => x.RequestId);
+               // e.Property(x => x.ProductId);
+               // e.Property(x => x.Quantity);
+                //e.HasOne(x => x.Product).WithMany(x => RequestLines)
+                //                      .HasForeignKey(x => x.Product)
+                //                      .OnDelete(DeleteBehavior.Restrict);
             });
             }
 

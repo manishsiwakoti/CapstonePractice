@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace CapstonePracticeLibrary.Models
     {
@@ -14,7 +15,9 @@ namespace CapstonePracticeLibrary.Models
         public int ProductId { get; set; }
         public int Quantity { get; set; } = 1;
 
+        [JsonIgnore] 
         public virtual Product Product { get; set; }
+        public virtual Request Request { get; set; }
         public RequestLine() { }
         }
     }

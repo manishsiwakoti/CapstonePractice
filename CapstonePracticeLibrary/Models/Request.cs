@@ -24,7 +24,7 @@ namespace CapstonePracticeLibrary.Models
         public decimal Total { get; set; } = 0;
         public int UserId { get; set; }
 
-
+        public virtual List<RequestLine> RequestLines { get; set; }
         public virtual User User { get; set; }
 
         }
