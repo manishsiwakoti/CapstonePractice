@@ -84,6 +84,7 @@ namespace CapstonePractice
             var p4 = new Product { Id = 0, PartNbr = "FIRESTIK", Name = "Fire TV Stick", Price = 49.99m, Unit = "1", VendorId = 400 };
             var p5 = new Product { Id = 0, PartNbr = "FIRETV", Name = "Fire TV Cube", Price = 129.99m, Unit = "1", VendorId = 500 };
             context.Products.AddRange(p1, p2, p3, p4, p5);
+
             var echo = context.Products.SingleOrDefault(p => p.PartNbr == "ECHO").Id;
             var echodot = context.Products.SingleOrDefault(p => p.PartNbr == "ECHODOT").Id;
             var echoshow = context.Products.SingleOrDefault(p => p.PartNbr == "ECHOSHOW").Id;
@@ -96,14 +97,11 @@ namespace CapstonePractice
                 }
             catch(DbUpdateException )
                 {
-                // throw new Exception //("Failed to Update");
-                //Console.WriteLine();
+                throw new Exception("Failed to Update");
+               
                 }
             return ;
             
-
-
-
             }
         static void GetAllProducts(AppDbContext context)
             {
