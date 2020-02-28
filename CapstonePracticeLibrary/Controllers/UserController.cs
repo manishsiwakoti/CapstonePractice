@@ -11,6 +11,11 @@ namespace CapstonePracticeLibrary.Controllers
         {
         private AppDbContext context = new AppDbContext();
 
+        public User Login(string username, string password)
+            {
+            return context.Users.SingleOrDefault(u => u.Username == username && u.Password == password);
+            }
+
         public List<User> GetAll()
             {
             return context.Users.ToList();

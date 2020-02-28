@@ -16,8 +16,17 @@ namespace CapstonePractice
             GetAllUsers(context);
             //AddVendor(context);
             GetAllVendors(context);
-           //AddProducts(context);
+            //AddProducts(context);
             GetAllProducts(context);
+            //AddRequests(context);
+            GetAllRequests(context);
+            //UpdateUser(context);
+            //UpdateRequest(context);
+            //AddRequestLines(context);
+            GetAllRequestLines(context);
+            //DeleteRequestLines(context);
+           
+
 
 
             }
@@ -41,6 +50,18 @@ namespace CapstonePractice
             return;
 
             }
+        static void UpdateUser(AppDbContext context)
+            {
+            var userPk = 6;
+            var user = context.Users.Find(userPk);
+            if (user == null) throw new Exception("User not found");
+            user.IsReviewer = true;
+
+            var rowsAffected = context.SaveChanges();
+            if (rowsAffected != 1) throw new Exception("Failed to Update");
+            Console.WriteLine("Update Successful");
+            }
+
         static void GetAllUsers(AppDbContext context)
             {
             var users = context.Users.ToList();
@@ -76,32 +97,30 @@ namespace CapstonePractice
             }
         static void AddProducts(AppDbContext context)
 
-            
+
             {
-            var p1 = new Product { Id = 0, PartNbr = "ECHO", Name = "Echo", Price = 99.99m, Unit = "1", VendorId = 100 };
-            var p2 = new Product { Id = 0, PartNbr = "ECHODOT", Name = "Echo", Price = 39.99m, Unit = "1", VendorId = 200 };
-            var p3 = new Product { Id = 0, PartNbr = "ECHOSHOW", Name = "Echo Show", Price = 119.99m, Unit = "1", VendorId = 300 };
-            var p4 = new Product { Id = 0, PartNbr = "FIRESTIK", Name = "Fire TV Stick", Price = 49.99m, Unit = "1", VendorId = 400 };
-            var p5 = new Product { Id = 0, PartNbr = "FIRETV", Name = "Fire TV Cube", Price = 129.99m, Unit = "1", VendorId = 500 };
+            var p1 = new Product { Id = 0, PartNbr = "ECHO", Name = "Echo", Price = 99.99m, Unit = "1", VendorId = 1 };
+            var p2 = new Product { Id = 0, PartNbr = "ECHODOT", Name = "Echo", Price = 39.99m, Unit = "1", VendorId = 2 };
+            var p3 = new Product { Id = 0, PartNbr = "ECHOSHOW", Name = "Echo Show", Price = 119.99m, Unit = "1", VendorId = 3 };
+            var p4 = new Product { Id = 0, PartNbr = "FIRESTIK", Name = "Fire TV Stick", Price = 49.99m, Unit = "1", VendorId = 4 };
+            var p5 = new Product { Id = 0, PartNbr = "FIRETV", Name = "Fire TV Cube", Price = 129.99m, Unit = "1", VendorId = 5 };
             context.Products.AddRange(p1, p2, p3, p4, p5);
 
-            var echo = context.Products.SingleOrDefault(p => p.PartNbr == "ECHO").Id;
-            var echodot = context.Products.SingleOrDefault(p => p.PartNbr == "ECHODOT").Id;
-            var echoshow = context.Products.SingleOrDefault(p => p.PartNbr == "ECHOSHOW").Id;
-            var firestick = context.Products.SingleOrDefault(p => p.PartNbr == "FIRESTIK").Id;
-            var firetv = context.Products.SingleOrDefault(p => p.PartNbr == "FIRETV").Id;
+
             try
                 {
                 var rowsAffected = context.SaveChanges();
-                
+                if (rowsAffected == 0) throw new Exception("Products cannot add");
+
+
                 }
-            catch(DbUpdateException )
+            catch (DbUpdateException)
                 {
-                throw new Exception("Failed to Update");
-               
+
+
                 }
-            return ;
-            
+            return;
+
             }
         static void GetAllProducts(AppDbContext context)
             {
@@ -109,13 +128,78 @@ namespace CapstonePractice
             foreach (var p in products)
                 {
                 Console.WriteLine(p);
-                     
+
+                }
+
             }
+        static void AddRequests(AppDbContext context)
+            {
+            var rq1 = new Request { Id = 0, Description = "Sunday", Justification = "ABC", Status = "New", UserId = 1 };
+            var rq2 = new Request { Id = 0, Description = "Monday", Justification = "BCD", Status = "New", UserId = 4 };
+            var rq3 = new Request { Id = 0, Description = "Tuesday", Justification = "CDE", Status = "New", UserId = 5 };
+            var rq4 = new Request { Id = 0, Description = "Wednesday", Justification = "DEF", Status = "New", UserId = 6 };
+            var rq5 = new Request { Id = 0, Description = "Thursday", Justification = "EFG", Status = "New", UserId = 7 };
+            context.Requests.AddRange(rq1, rq2, rq3, rq4, rq5);
+            var rowsAffected = context.SaveChanges();
+            Console.WriteLine("Requests Added");
+            }
+        static void GetAllRequests(AppDbContext context)
+            {
+            var requests = context.Requests.ToList();
+            foreach (var rq in requests)
+                {
+                Console.WriteLine(rq);
+                }
+
+            }
+        static void UpdateRequest(AppDbContext context)
+            {
+            var requestid = 14;
+
+            var request = context.Requests.Find(requestid);
+            if (request == null) throw new Exception("Request not found");
+            request.Status = "NEW";
+            var rowAffected = context.SaveChanges();
+            if (rowAffected != 1) throw new Exception("Cannot update Request");
+            Console.WriteLine("Successful!");
+            }
+
+
+
+        static void AddRequestLines(AppDbContext context)
+            {
+            var rls1 = new RequestLine { Id = 0, RequestId = 10, ProductId = 24 };
+            var rls2 = new RequestLine { Id = 0, RequestId = 11, ProductId = 25 };
+            var rls3 = new RequestLine { Id = 0, RequestId = 12, ProductId = 26 };
+            var rls4 = new RequestLine { Id = 0, RequestId = 13, ProductId = 27 };
+            var rls5 = new RequestLine { Id = 0, RequestId = 14, ProductId = 28 };
+            context.RequestLines.AddRange(rls1, rls2, rls3, rls4, rls5);
+            var rowsAffected = context.SaveChanges();
+            Console.WriteLine("Added RequestLines");
+            }
+        static void GetAllRequestLines(AppDbContext context)
+            {
+            var requestlines = context.RequestLines.ToList();
+            foreach (var rls in requestlines)
+                {
+                Console.WriteLine(rls);
+                }
+            }
+        static void DeleteRequestLines(AppDbContext context)
+            {
+            var KeyTODelete = 10;
+            var rls = context.RequestLines.Find(KeyTODelete);
+            if (rls == null) throw new Exception("RequestLine not Found");
+            context.RequestLines.Remove(rls);
+            var rowsAffected = context.SaveChanges();
+            if (rowsAffected != 10) throw new Exception("Delete Failed");
+            }
+
         }
-       }
+    }
                 
 
-    }
+    
  
     
 
